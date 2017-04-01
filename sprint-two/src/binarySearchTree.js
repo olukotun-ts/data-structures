@@ -64,8 +64,22 @@ BinarySearchTree.prototype.contains = function(target, node){
 
 BinarySearchTree.prototype.depthFirstLog = function(cb, node){
   var node = node || this;  // Start at root if node is unspecified.
-  //
+
+  // Base case: Call cb on node.
+  cb(node.value);
+
+  // Iterative case.
+  if (node.left !== null){  // If node has a left,
+    // Call cb on left...
+    node.depthFirstLog(cb, node.left);
+  }
+
+  if (node.right !== null){  // If node has a right,
+    // Call cb on right...
+    node.depthFirstLog(cb, node.right);
+  }
 }
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
